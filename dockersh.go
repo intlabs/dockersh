@@ -5,7 +5,7 @@ import (
 	"encoding/hex"
 	"errors"
 	"fmt"
-	"github.com/docker/libcontainer/user@v1.2.0"
+	"github.com/intlabs/libcontainer/user"
 	"os"
 	"os/signal"
 	"strings"
