@@ -131,6 +131,13 @@ func realMain() int {
 			return 1
 		}
 	}
+	
+	type ExecUser struct {
+	Uid, Gid int
+	Sgids    []int
+	Home     string
+	}
+	
 	_, _, groups, _, err := user.GetExecUserPath(username, defaults *ExecUser, "/etc/passwd", "/")
 	err = nsenterexec(config.ContainerName, uid, gid, groups, config.UserCwd, config.Shell)
 	if err != nil {
