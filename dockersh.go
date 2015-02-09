@@ -131,7 +131,7 @@ func realMain() int {
 			return 1
 		}
 	}
-	_, _, groups, _, err := user.GetExecUserPath(username, 65536, "/etc/passwd", "/")
+	_, _, groups, _, err := user.GetExecUserPath(username, defaults *ExecUser, "/etc/passwd", "/")
 	err = nsenterexec(config.ContainerName, uid, gid, groups, config.UserCwd, config.Shell)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error starting shell in new container: %v\n", err)
