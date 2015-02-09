@@ -5,7 +5,7 @@ import (
 	"encoding/hex"
 	"errors"
 	"fmt"
-	"github.com/docker/libcontainer/user"
+	"github.com/docker/libcontainer/user@v1.2.0"
 	"os"
 	"os/signal"
 	"strings"
@@ -131,7 +131,7 @@ func realMain() int {
 			return 1
 		}
 	}
-	
+	_, _, groups, _, err := user.GetUserGroupSupplementaryHome(username, 65536, 65536, "/")
 	err = nsenterexec(config.ContainerName, uid, gid, groups, config.UserCwd, config.Shell)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error starting shell in new container: %v\n", err)
